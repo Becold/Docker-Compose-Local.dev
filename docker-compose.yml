@@ -1,0 +1,49 @@
+## Configuration Apache
+web:
+   restart: always
+   build: apache
+   ports:
+      - "80:80"
+   volumes:
+      - E:\Lab\Site:/var/www
+      - E:\Lab\Docker\web\php.ini:/etc/php5/apache2/conf.d/30-custom.ini
+      - E:\Lab\Docker\web\sites:/etc/apache2/sites-enabled
+   environment:
+      - ALLOW_OVERRIDE=true
+   links:
+      - db:db
+      - maildev:maildev
+
+## Configuration Nginx + PHP
+#web:
+# restart: always
+# image: nginx
+# ports:
+#  - "80:80"
+# volumes:
+#  - /var/www/docker/nginx:/etc/nginx/conf.d
+#  - /var/www:/var/www/local.dev
+# links:
+#  - php:php
+#php:
+# build: php
+# restart: always
+# volumes:
+#  - /var/www:/var/www/local.dev
+#  - /var/www/docker/php.ini:/usr/local/etc/php/php.ini
+# links:
+#  - db:db
+
+db:
+ image: mysql
+ restart: always
+ volumes:
+  - E:\Lab\Docker\db_data:/var/lib/mysql
+ environment:
+  - MYSQL_ROOT_PASSWORD=root
+
+maildev:
+ restart: always
+ image: djfarrelly/maildev
+ ports:
+  - "1080:80"
