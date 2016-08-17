@@ -11,9 +11,8 @@ Contient un docker-composer les containers :
 ## Installation
 1. Installez [Docker for Windows](https://docs.docker.com/engine/installation/windows/)
 2. Dans les paramètres de Docker, partagez la partition où accueillera vos dossiers partagés (projets/siteweb, base de donnée mysql, ...)  
-
-![Partage du disque E:](http://i.imgur.com/xypA89w.png?1)
-3. Configurez les containers (voir partie Configuration)
+![](http://i.imgur.com/xypA89w.png?1)  
+3. Configurez les containers (voir partie Configuration)  
 4. Utilisez la commande `docker-compose up` 
 
 ## Configuration par défaut
